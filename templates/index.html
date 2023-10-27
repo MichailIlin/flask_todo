@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Заметочник</title>
+</head>
+<body>
+    <h1>Заметки</h1>
+    <form action="/add" method="post">
+        <p>Текст заметки</p>
+        <p><input type="text" name="content"/></p>
+        <p><input type='submit' value="Подтвердить"/></p>
+    </form>
+
+    {% for todo in todo_list %}
+        <p>{{todo.id}} | {{todo.title}}</p>
+        {% if todo.complete == False %}
+            <p>Не выполнено</p>
+        {% else %}
+            <p>Выполнено</p>
+        {% endif %}
+        <a href="/delete/{{todo.id}}">Удалить</a>
+        <a href="/update/{{todo.id}}">Обновить</a>
+    {% endfor %}
+</body>
+</html>
